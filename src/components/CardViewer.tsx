@@ -1,8 +1,8 @@
-import {Col, Card as BootstrapCard} from 'react-bootstrap';
+import { Col, Card as BootstrapCard } from 'react-bootstrap';
 import { Card } from '../interfaces/card';
 
-export function CardViewer({card, answerRevealed}:
-  {card: Card, answerRevealed: boolean}): JSX.Element {
+export function CardViewer({ card, answerRevealed }:
+  { card: Card, answerRevealed: boolean }): JSX.Element {
   return <Col>
     <BootstrapCard>
       <BootstrapCard.Body>
@@ -11,7 +11,7 @@ export function CardViewer({card, answerRevealed}:
           <strong>Prompt</strong>: {card.prompt}
         </BootstrapCard.Text>
         {answerRevealed && <BootstrapCard.Text>
-          <strong>Answer</strong>: {card.answer}
+          <strong data-testid="answer-label">Answer</strong>: {card.answer}
         </BootstrapCard.Text>}
       </BootstrapCard.Body>
     </BootstrapCard>
