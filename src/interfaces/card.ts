@@ -1,6 +1,6 @@
 
 export enum CardKind { 
-    TeachingHard, TeachingEasy, Miroagressions
+    TeachingHard = "TeachingHard", TeachingEasy = "TeachingEasy", Miroagressions = "Microagressions"
 }
 
 
