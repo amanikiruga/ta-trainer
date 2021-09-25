@@ -1,8 +1,44 @@
-export const ControlPanel = (props : {className: string, btnOnClick: (value: number) => void, randomCardIndexGenerator: () => number}) : JSX.Element => { 
-    return ( 
+import { useState } from "react";
+
+type ControlPanelProps = {
+    className: string;
+    promptBtnOnClick: (value: number) => void;
+    answerBtnOnClick: (value: boolean) => void;
+    isRevealAnswer: boolean;
+    addTAEntry: (value: string) => void;
+    randomCardIndexGenerator: () => number;
+};
+
+export const ControlPanel = (props: ControlPanelProps): JSX.Element => {
+    const [addTAInputBox, setAddTAInputBox] = useState<string>("");
+
+    return (
         <div className={props.className}>
             <h1>Control Panel </h1>
-            <button onClick= {() => props.btnOnClick(props.randomCardIndexGenerator())}> Swap Card</button>
+
+            <input
+                id="addTABox"
+                value={addTAInputBox}
+                onInput={(ev) =>
+                    setAddTAInputBox((ev.target as HTMLTextAreaElement).value)
+                }
+                placeholder="Add first and last name"
+            ></input>
+            <button onClick={() => props.addTAEntry(addTAInputBox)}>
+                Add TA
+            </button>
+            <button
+                onClick={() =>
+                    props.promptBtnOnClick(props.randomCardIndexGenerator())
+                }
+            >
+                Swap Card
+            </button>
+            <button
+                onClick={() => props.answerBtnOnClick(!props.isRevealAnswer)}
+            >
+                Show Answer
+            </button>
         </div>
-    )
-}
+    );
+};
