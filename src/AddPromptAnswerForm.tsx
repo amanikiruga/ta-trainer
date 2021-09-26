@@ -21,7 +21,10 @@ const AddNewCardForm = (props: AddNewCardFormProps) => {
 
     return ReactDOM.createPortal(
         <div>
-            <div className="non-modal-overlay" />
+            <div
+                className="non-modal-overlay"
+                onClick={props.onCloseModalBtn}
+            />
             <div className="modal">
                 <button
                     onClick={() => {

@@ -11,5 +11,10 @@ export const TAList = (props: TAListProps): JSX.Element => {
             })}
         </ol>
     );
-    return <div className={props.className}>{TAEntriesToShow}</div>;
+    return (
+        <div className={props.className} id="ta-list">
+            <h1> Order </h1>
+            {TAEntriesToShow}
+        </div>
+    );
 };

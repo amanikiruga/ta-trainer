@@ -45,31 +45,40 @@ function App(): JSX.Element {
     };
     return (
         <div className="App">
-            <TAList className={""} TAEntries={TAEntries}></TAList>
             <div className="row">
-                <AddNewCardForm
-                    isOpen={isOpen}
-                    currentCardsLength={cardList.length}
-                    onAddNewCardBtn={(newCardToAdd: Card) =>
-                        setCardList(cardList.concat(newCardToAdd))
-                    }
-                    onCloseModalBtn={() => setIsOpen(false)}
-                />
-                <ControlPanel
-                    className={"row-item"}
-                    promptBtnOnClick={setCurrentCardId}
-                    answerBtnOnClick={setIsRevealAnswer}
-                    isRevealAnswer={isRevealAnswer}
-                    addTAEntry={addTAEntry}
-                    shuffleTAEntries={shuffleTAEntries}
-                    randomCardIndexGenerator={getRandomCardIndex}
-                    onOpenModalBtn={() => setIsOpen(true)}
-                />
-                <CardViewer
-                    className={"row-item"}
-                    activeCardIndex={currentCardId}
-                    isRevealAnswer={isRevealAnswer}
-                />
+                <div className="row-item">
+                    {" "}
+                    <TAList
+                        className={"row-item"}
+                        TAEntries={TAEntries}
+                    ></TAList>
+                    <AddNewCardForm
+                        isOpen={isOpen}
+                        currentCardsLength={cardList.length}
+                        onAddNewCardBtn={(newCardToAdd: Card) =>
+                            setCardList(cardList.concat(newCardToAdd))
+                        }
+                        onCloseModalBtn={() => setIsOpen(false)}
+                    />
+                    <ControlPanel
+                        className={"row-item"}
+                        promptBtnOnClick={setCurrentCardId}
+                        answerBtnOnClick={setIsRevealAnswer}
+                        isRevealAnswer={isRevealAnswer}
+                        addTAEntry={addTAEntry}
+                        shuffleTAEntries={shuffleTAEntries}
+                        randomCardIndexGenerator={getRandomCardIndex}
+                        onOpenModalBtn={() => setIsOpen(true)}
+                    />
+                </div>
+
+                <div className="row-item">
+                    <CardViewer
+                        className={""}
+                        activeCardIndex={currentCardId}
+                        isRevealAnswer={isRevealAnswer}
+                    />
+                </div>
             </div>
         </div>
     );
