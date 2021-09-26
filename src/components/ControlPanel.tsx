@@ -28,17 +28,24 @@ export const ControlPanel = (props: ControlPanelProps): JSX.Element => {
                         )
                     }
                     placeholder="Add first and last name"
+                    style={{
+                        display: "inline-block",
+                    }}
                 ></input>
-                <button onClick={props.shuffleTAEntries}>Shuffle order</button>
-                <button onClick={props.onOpenModalBtn}>Add Cards</button>
                 <button
                     onClick={() => {
                         props.addTAEntry(addTAInputBox);
                         setAddTAInputBox("");
                     }}
+                    style={{
+                        display: "inline-block",
+                    }}
                 >
                     Add TA
                 </button>
+                <button onClick={props.shuffleTAEntries}>Shuffle order</button>
+                <button onClick={props.onOpenModalBtn}>Add Cards</button>
+
                 <button
                     onClick={() =>
                         props.promptBtnOnClick(props.randomCardIndexGenerator())
