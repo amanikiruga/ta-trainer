@@ -6,7 +6,9 @@ type ControlPanelProps = {
     answerBtnOnClick: (value: boolean) => void;
     isRevealAnswer: boolean;
     addTAEntry: (value: string) => void;
+    shuffleTAEntries: () => void;
     randomCardIndexGenerator: () => number;
+    onOpenModalBtn: () => void;
 };
 
 export const ControlPanel = (props: ControlPanelProps): JSX.Element => {
@@ -24,6 +26,8 @@ export const ControlPanel = (props: ControlPanelProps): JSX.Element => {
                 }
                 placeholder="Add first and last name"
             ></input>
+            <button onClick={props.shuffleTAEntries}>Shuffle order</button>
+            <button onClick={props.onOpenModalBtn}>Add Cards</button>
             <button onClick={() => props.addTAEntry(addTAInputBox)}>
                 Add TA
             </button>
