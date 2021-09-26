@@ -28,17 +28,11 @@ export const ControlPanel = (props: ControlPanelProps): JSX.Element => {
                         )
                     }
                     placeholder="Add first and last name"
-                    style={{
-                        display: "inline-block",
-                    }}
                 ></input>
                 <button
                     onClick={() => {
                         props.addTAEntry(addTAInputBox);
                         setAddTAInputBox("");
-                    }}
-                    style={{
-                        display: "inline-block",
                     }}
                 >
                     Add TA
