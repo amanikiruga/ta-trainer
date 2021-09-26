@@ -7,7 +7,7 @@ import "./App.css";
 import { Card } from "./interfaces/card";
 import { TAList } from "./components/TAList";
 import { Type } from "typescript";
-import AddPromptAnswerForm from "./AddPromptAnswerForm";
+import AddNewCardForm from "./AddPromptAnswerForm";
 function App(): JSX.Element {
     const getRandomCardIndex = () => {
         return Math.floor(Math.random() * CARDS.length);
@@ -17,6 +17,7 @@ function App(): JSX.Element {
     const [isRevealAnswer, setIsRevealAnswer] = useState<boolean>(false);
     const [TAEntries, setTAEntries] = useState<string[]>([]);
     const [isOpen, setIsOpen] = useState(false);
+    const [cardList, setCardList] = useState<Card[]>(CARDS as Card[]);
 
     const shuffleListOfItems = <T extends unknown>(listOfItems: Array<T>) => {
         let listOfItemsCopy = listOfItems.slice();
@@ -46,8 +47,12 @@ function App(): JSX.Element {
         <div className="App">
             <TAList className={""} TAEntries={TAEntries}></TAList>
             <div className="row">
-                <AddPromptAnswerForm
+                <AddNewCardForm
                     isOpen={isOpen}
+                    currentCardsLength={cardList.length}
+                    onAddNewCardBtn={(newCardToAdd: Card) =>
+                        setCardList(cardList.concat(newCardToAdd))
+                    }
                     onCloseModalBtn={() => setIsOpen(false)}
                 />
                 <ControlPanel
